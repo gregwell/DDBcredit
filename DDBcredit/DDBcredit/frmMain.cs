@@ -23,8 +23,11 @@ namespace DDBcredit
             connectionString = ConfigurationManager.ConnectionStrings["DDBcredit.Properties.Settings.Database1ConnectionString"].ConnectionString;
         }
 
-        public void frmMain_Load_1(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'database1DataSet.Customers' table. You can move, or remove it, as needed.
+            this.customersTableAdapter.Fill(this.database1DataSet.Customers);
+
             PopulateCustomers();
         }
 
@@ -42,27 +45,47 @@ namespace DDBcredit
             }
         }
 
+        private void PopulateAdresses()
+        {
+            string query = "SELECT a.Country FROM Adresses a" +
+                " INNER JOIN CustomerAdress b ON a.Id = b.AdressId" +
+                " WHERE b.CustomerId = @CustomerId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@CustomerId", lstCustomers.SelectedValue);
+
+                DataTable adressesTable = new DataTable();
+                adapter.Fill(adressesTable);
+
+                lstAdresses.DisplayMember = "Country";
+                lstAdresses.ValueMember = "Id";
+                lstAdresses.DataSource = adressesTable;
+            }
+        }
+
         private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PopulateAdresses();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private void btnAddCustomerName_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'database1DataSet.Customers' table. You can move, or remove it, as needed.
-            this.customersTableAdapter.Fill(this.database1DataSet.Customers);
+            string query = "INSERT INTO Customers VALUES (@CustomerName, 'Surname', 'Birthdate', 'Pesel', 'Birthplace', 'Document')";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text);
+
+                command.ExecuteScalar();
+            }
 
             PopulateCustomers();
-        }
-
-        private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.customersBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.database1DataSet);
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
     }
 }
