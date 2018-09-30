@@ -23,11 +23,7 @@ namespace DDBcredit
             connectionString = ConfigurationManager.ConnectionStrings["DDBcredit.Properties.Settings.Database1ConnectionString"].ConnectionString;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void frm_main_Load(object sender, EventArgs e)
+        public void frmMain_Load_1(object sender, EventArgs e)
         {
             PopulateCustomers();
         }
@@ -44,6 +40,29 @@ namespace DDBcredit
                 lstCustomers.ValueMember = "Id";
                 lstCustomers.DataSource = customerTable;
             }
+        }
+
+        private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'database1DataSet.Customers' table. You can move, or remove it, as needed.
+            this.customersTableAdapter.Fill(this.database1DataSet.Customers);
+
+            PopulateCustomers();
+        }
+
+        private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.customersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.database1DataSet);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
