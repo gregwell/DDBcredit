@@ -20,7 +20,9 @@ namespace DDBcredit
         public frmMain()
         {
             InitializeComponent();
-            connectionString = ConfigurationManager.ConnectionStrings["DDBcredit.Properties.Settings.Database1ConnectionString"].ConnectionString;
+            //connectionString = ConfigurationManager.ConnectionStrings["DDBcredit.Properties.Settings.Database1ConnectionString"].ConnectionString;
+
+            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\abc\Source\Repos\DDBcredit\DDBcredit\DDBcredit\Database1.mdf;Integrated Security=True";
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace DDBcredit
                 connection.Open();
 
                 command.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text);
-
+                txtCustomerName.Text = String.Empty;
                 command.ExecuteScalar();
             }
 
