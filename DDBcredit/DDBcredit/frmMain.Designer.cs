@@ -52,9 +52,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.dgvAccount = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // database1DataSet
@@ -82,7 +84,7 @@
             // lstCustomers
             // 
             this.lstCustomers.FormattingEnabled = true;
-            this.lstCustomers.Location = new System.Drawing.Point(948, 340);
+            this.lstCustomers.Location = new System.Drawing.Point(428, 407);
             this.lstCustomers.Name = "lstCustomers";
             this.lstCustomers.Size = new System.Drawing.Size(233, 212);
             this.lstCustomers.TabIndex = 2;
@@ -102,7 +104,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F);
-            this.label1.Location = new System.Drawing.Point(915, 29);
+            this.label1.Location = new System.Drawing.Point(854, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(318, 51);
             this.label1.TabIndex = 5;
@@ -112,7 +114,7 @@
             // lstAdresses
             // 
             this.lstAdresses.FormattingEnabled = true;
-            this.lstAdresses.Location = new System.Drawing.Point(948, 102);
+            this.lstAdresses.Location = new System.Drawing.Point(678, 407);
             this.lstAdresses.Name = "lstAdresses";
             this.lstAdresses.Size = new System.Drawing.Size(233, 212);
             this.lstAdresses.TabIndex = 4;
@@ -151,7 +153,7 @@
             this.dgvCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.RowTemplate.Height = 24;
-            this.dgvCustomers.Size = new System.Drawing.Size(874, 312);
+            this.dgvCustomers.Size = new System.Drawing.Size(769, 312);
             this.dgvCustomers.TabIndex = 9;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             // 
@@ -252,11 +254,22 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "Document no.";
             // 
+            // dgvAccount
+            // 
+            this.dgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccount.Location = new System.Drawing.Point(812, 76);
+            this.dgvAccount.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvAccount.Name = "dgvAccount";
+            this.dgvAccount.RowTemplate.Height = 24;
+            this.dgvAccount.Size = new System.Drawing.Size(411, 312);
+            this.dgvAccount.TabIndex = 21;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 665);
+            this.Controls.Add(this.dgvAccount);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -282,6 +295,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,6 +326,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dgvAccount;
     }
 }
 
