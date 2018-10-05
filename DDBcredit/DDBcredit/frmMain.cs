@@ -107,5 +107,24 @@ namespace DDBcredit
         private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        // basic functionalities:
+        //1.1) browse actual customers
+        //1.2) add new customers
+        //1.3) update info about customers, delete and do any other operation with them.
+
+        //2.1 add new accounts - new table with accounts
+        // - id has to be set automatically
+        // - account type
+        // - select customer
+        // - colect date and time when account opened
+        // - give to admin possibility to change date and user
+
+        //2.2
+        // -to customer browser add functionality to see account which he actually has and ones from the past
     }
 }

@@ -72,7 +72,7 @@
             // 
             this.lstCustomers.FormattingEnabled = true;
             this.lstCustomers.ItemHeight = 16;
-            this.lstCustomers.Location = new System.Drawing.Point(24, 76);
+            this.lstCustomers.Location = new System.Drawing.Point(1264, 418);
             this.lstCustomers.Margin = new System.Windows.Forms.Padding(4);
             this.lstCustomers.Name = "lstCustomers";
             this.lstCustomers.Size = new System.Drawing.Size(309, 260);
@@ -94,18 +94,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F);
-            this.label1.Location = new System.Drawing.Point(355, 9);
+            this.label1.Location = new System.Drawing.Point(1220, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 63);
+            this.label1.Size = new System.Drawing.Size(396, 63);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Adress";
+            this.label1.Text = "Account history";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lstAdresses
             // 
             this.lstAdresses.FormattingEnabled = true;
             this.lstAdresses.ItemHeight = 16;
-            this.lstAdresses.Location = new System.Drawing.Point(366, 76);
+            this.lstAdresses.Location = new System.Drawing.Point(1264, 125);
             this.lstAdresses.Margin = new System.Windows.Forms.Padding(4);
             this.lstAdresses.Name = "lstAdresses";
             this.lstAdresses.Size = new System.Drawing.Size(309, 260);
@@ -115,7 +116,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label2.Location = new System.Drawing.Point(762, 122);
+            this.label2.Location = new System.Drawing.Point(63, 549);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(270, 24);
@@ -124,7 +125,7 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(780, 170);
+            this.txtCustomerName.Location = new System.Drawing.Point(81, 597);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(132, 22);
@@ -132,7 +133,7 @@
             // 
             // btnAddCustomerName
             // 
-            this.btnAddCustomerName.Location = new System.Drawing.Point(934, 166);
+            this.btnAddCustomerName.Location = new System.Drawing.Point(235, 593);
             this.btnAddCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddCustomerName.Name = "btnAddCustomerName";
             this.btnAddCustomerName.Size = new System.Drawing.Size(100, 28);
@@ -144,10 +145,10 @@
             // dgvCustomers
             // 
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Location = new System.Drawing.Point(24, 343);
+            this.dgvCustomers.Location = new System.Drawing.Point(33, 93);
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.RowTemplate.Height = 24;
-            this.dgvCustomers.Size = new System.Drawing.Size(1117, 259);
+            this.dgvCustomers.Size = new System.Drawing.Size(1165, 384);
             this.dgvCustomers.TabIndex = 9;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             // 
@@ -155,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 611);
+            this.ClientSize = new System.Drawing.Size(1659, 819);
             this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.btnAddCustomerName);
             this.Controls.Add(this.txtCustomerName);
