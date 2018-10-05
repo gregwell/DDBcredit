@@ -40,8 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.btnAddCustomerName = new System.Windows.Forms.Button();
+            this.dgvCustomers = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
             // 
             // database1DataSet
@@ -69,9 +71,11 @@
             // lstCustomers
             // 
             this.lstCustomers.FormattingEnabled = true;
-            this.lstCustomers.Location = new System.Drawing.Point(74, 86);
+            this.lstCustomers.ItemHeight = 16;
+            this.lstCustomers.Location = new System.Drawing.Point(24, 76);
+            this.lstCustomers.Margin = new System.Windows.Forms.Padding(4);
             this.lstCustomers.Name = "lstCustomers";
-            this.lstCustomers.Size = new System.Drawing.Size(233, 212);
+            this.lstCustomers.Size = new System.Drawing.Size(309, 260);
             this.lstCustomers.TabIndex = 2;
             this.lstCustomers.SelectedIndexChanged += new System.EventHandler(this.lstCustomers_SelectedIndexChanged);
             // 
@@ -79,9 +83,10 @@
             // 
             this.lblCustomers.AutoSize = true;
             this.lblCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F);
-            this.lblCustomers.Location = new System.Drawing.Point(76, 21);
+            this.lblCustomers.Location = new System.Drawing.Point(13, 9);
+            this.lblCustomers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomers.Name = "lblCustomers";
-            this.lblCustomers.Size = new System.Drawing.Size(231, 51);
+            this.lblCustomers.Size = new System.Drawing.Size(288, 63);
             this.lblCustomers.TabIndex = 3;
             this.lblCustomers.Text = "Customers";
             // 
@@ -89,52 +94,69 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F);
-            this.label1.Location = new System.Drawing.Point(396, 21);
+            this.label1.Location = new System.Drawing.Point(355, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 51);
+            this.label1.Size = new System.Drawing.Size(195, 63);
             this.label1.TabIndex = 5;
             this.label1.Text = "Adress";
             // 
             // lstAdresses
             // 
             this.lstAdresses.FormattingEnabled = true;
-            this.lstAdresses.Location = new System.Drawing.Point(392, 86);
+            this.lstAdresses.ItemHeight = 16;
+            this.lstAdresses.Location = new System.Drawing.Point(366, 76);
+            this.lstAdresses.Margin = new System.Windows.Forms.Padding(4);
             this.lstAdresses.Name = "lstAdresses";
-            this.lstAdresses.Size = new System.Drawing.Size(233, 212);
+            this.lstAdresses.Size = new System.Drawing.Size(309, 260);
             this.lstAdresses.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label2.Location = new System.Drawing.Point(71, 324);
+            this.label2.Location = new System.Drawing.Point(762, 122);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 18);
+            this.label2.Size = new System.Drawing.Size(270, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "Add new customer to database";
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(85, 363);
+            this.txtCustomerName.Location = new System.Drawing.Point(780, 170);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomerName.Size = new System.Drawing.Size(132, 22);
             this.txtCustomerName.TabIndex = 7;
             // 
             // btnAddCustomerName
             // 
-            this.btnAddCustomerName.Location = new System.Drawing.Point(200, 360);
+            this.btnAddCustomerName.Location = new System.Drawing.Point(934, 166);
+            this.btnAddCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddCustomerName.Name = "btnAddCustomerName";
-            this.btnAddCustomerName.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCustomerName.Size = new System.Drawing.Size(100, 28);
             this.btnAddCustomerName.TabIndex = 8;
             this.btnAddCustomerName.Text = "Add customer";
             this.btnAddCustomerName.UseVisualStyleBackColor = true;
             this.btnAddCustomerName.Click += new System.EventHandler(this.btnAddCustomerName_Click);
             // 
+            // dgvCustomers
+            // 
+            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomers.Location = new System.Drawing.Point(24, 343);
+            this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.RowTemplate.Height = 24;
+            this.dgvCustomers.Size = new System.Drawing.Size(1117, 259);
+            this.dgvCustomers.TabIndex = 9;
+            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1169, 611);
+            this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.btnAddCustomerName);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.label2);
@@ -142,11 +164,13 @@
             this.Controls.Add(this.lstAdresses);
             this.Controls.Add(this.lblCustomers);
             this.Controls.Add(this.lstCustomers);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Text = "DDBc management panel";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +189,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Button btnAddCustomerName;
+        private System.Windows.Forms.DataGridView dgvCustomers;
     }
 }
 

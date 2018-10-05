@@ -29,6 +29,7 @@ namespace DDBcredit
             this.customersTableAdapter.Fill(this.database1DataSet.Customers);
 
             PopulateCustomers();
+            PopulateDgv();
         }
 
         private void PopulateCustomers()
@@ -42,6 +43,20 @@ namespace DDBcredit
                 lstCustomers.DisplayMember = "Name";
                 lstCustomers.ValueMember = "Id";
                 lstCustomers.DataSource = customerTable;
+            }
+        }
+
+        private void PopulateDgv()
+        {
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM customers", connection))
+            {
+                var commandBuilder = new SqlCommandBuilder(adapter);
+                var ds = new DataSet();
+                adapter.Fill(ds);
+
+                dgvCustomers.ReadOnly = true;
+                dgvCustomers.DataSource = ds.Tables[0];
             }
         }
 
@@ -86,6 +101,11 @@ namespace DDBcredit
             }
 
             PopulateCustomers();
+            PopulateDgv();
+        }
+
+        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }
