@@ -88,7 +88,7 @@ namespace DDBcredit
 
         private void btnAddCustomerName_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO Customers VALUES (@CustomerName, 'Surname', 'Birthdate', 'Pesel', 'Birthplace', 'Document')";
+            string query = "INSERT INTO Customers VALUES (@CustomerName, @CustomerSurname, @CustomerBirthdate, @CustomerPesel, @CustomerBirthPlace, @CustomerDocument)";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -96,7 +96,17 @@ namespace DDBcredit
                 connection.Open();
 
                 command.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text);
+                command.Parameters.AddWithValue("@CustomerSurname", txtCustomerSurname.Text);
+                command.Parameters.AddWithValue("@CustomerBirthdate", txtCustomerBirthdate.Text);
+                command.Parameters.AddWithValue("@CustomerPesel", txtCustomerPesel.Text);
+                command.Parameters.AddWithValue("@CustomerBirthplace", txtCustomerBirthPlace.Text);
+                command.Parameters.AddWithValue("@CustomerDocument", txtCustomerDocument.Text);
                 txtCustomerName.Text = String.Empty;
+                txtCustomerSurname.Text = String.Empty;
+                txtCustomerBirthdate.Text = String.Empty;
+                txtCustomerPesel.Text = String.Empty;
+                txtCustomerBirthPlace.Text = String.Empty;
+                txtCustomerDocument.Text = String.Empty;
                 command.ExecuteScalar();
             }
 
@@ -110,6 +120,19 @@ namespace DDBcredit
 
         private void label1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
 
         // basic functionalities:
