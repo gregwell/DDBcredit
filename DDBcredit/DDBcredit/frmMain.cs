@@ -167,6 +167,51 @@ namespace DDBcredit
         {
         }
 
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            string query = "UPDATE Customers SET Name = @CustomerName, Surname = @CustomerSurname, Birthdate = @CustomerBirthdate, Pesel = @CustomerPesel, BirthPlace = @CustomerBirthPlace, Document =  @CustomerDocument WHERE Id = @CustomerId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text);
+                command.Parameters.AddWithValue("@CustomerSurname", txtCustomerSurname.Text);
+                command.Parameters.AddWithValue("@CustomerBirthdate", txtCustomerBirthdate.Text);
+                command.Parameters.AddWithValue("@CustomerPesel", txtCustomerPesel.Text);
+                command.Parameters.AddWithValue("@CustomerBirthplace", txtCustomerBirthPlace.Text);
+                command.Parameters.AddWithValue("@CustomerDocument", txtCustomerDocument.Text);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.RowIndex + 1);
+                txtCustomerName.Text = String.Empty;
+                txtCustomerSurname.Text = String.Empty;
+                txtCustomerBirthdate.Text = String.Empty;
+                txtCustomerPesel.Text = String.Empty;
+                txtCustomerBirthPlace.Text = String.Empty;
+                txtCustomerDocument.Text = String.Empty;
+                command.ExecuteScalar();
+            }
+
+            //PopulateCustomers();
+            PopulateDgv();
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            string query = "DELETE from Customers WHERE Id = @CustomerId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.Value);
+                command.ExecuteScalar();
+            }
+
+            PopulateDgv();
+        }
+
         // basic functionalities:
         //1.1) browse actual customers
         //1.2) add new customers

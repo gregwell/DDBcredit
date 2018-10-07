@@ -55,6 +55,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnUpdateCustomer = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -123,11 +125,11 @@
             // 
             // btnAddCustomerName
             // 
-            this.btnAddCustomerName.Location = new System.Drawing.Point(925, 241);
+            this.btnAddCustomerName.Location = new System.Drawing.Point(913, 241);
             this.btnAddCustomerName.Name = "btnAddCustomerName";
-            this.btnAddCustomerName.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCustomerName.Size = new System.Drawing.Size(87, 23);
             this.btnAddCustomerName.TabIndex = 8;
-            this.btnAddCustomerName.Text = "Add customer";
+            this.btnAddCustomerName.Text = "Add";
             this.btnAddCustomerName.UseVisualStyleBackColor = true;
             this.btnAddCustomerName.Click += new System.EventHandler(this.btnAddCustomerName_Click);
             // 
@@ -287,11 +289,33 @@
             this.label15.Text = "Add new account";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
+            // btnUpdateCustomer
+            // 
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(854, 241);
+            this.btnUpdateCustomer.Name = "btnUpdateCustomer";
+            this.btnUpdateCustomer.Size = new System.Drawing.Size(53, 23);
+            this.btnUpdateCustomer.TabIndex = 31;
+            this.btnUpdateCustomer.Text = "Update";
+            this.btnUpdateCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.Location = new System.Drawing.Point(795, 241);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(53, 23);
+            this.btnDeleteUser.TabIndex = 32;
+            this.btnDeleteUser.Text = "Delete";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 574);
+            this.Controls.Add(this.btnDeleteUser);
+            this.Controls.Add(this.btnUpdateCustomer);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox6);
@@ -354,6 +378,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnUpdateCustomer;
+        private System.Windows.Forms.Button btnDeleteUser;
     }
 }
 
