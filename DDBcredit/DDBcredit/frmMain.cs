@@ -28,23 +28,45 @@ namespace DDBcredit
             // TODO: This line of code loads data into the 'database1DataSet.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.database1DataSet.Customers);
 
-            PopulateCustomers();
+            //PopulateCustomers();
             PopulateDgv();
+            PopulateDgvAccounts();
         }
 
-        private void PopulateCustomers()
-        {
-            using (connection = new SqlConnection(connectionString))
-            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM customers", connection))
-            {
-                DataTable customerTable = new DataTable();
-                adapter.Fill(customerTable);
+        //private void PopulateCustomers()
+        //{
+        //    using (connection = new SqlConnection(connectionString))
+        //    using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM customers", connection))
+        //    {
+        //        DataTable customerTable = new DataTable();
+        //        adapter.Fill(customerTable);
 
-                lstCustomers.DisplayMember = "Name";
-                lstCustomers.ValueMember = "Id";
-                lstCustomers.DataSource = customerTable;
-            }
-        }
+        //        lstCustomers.DisplayMember = "Name";
+        //        lstCustomers.ValueMember = "Id";
+        //        lstCustomers.DataSource = customerTable;
+        //    }
+        //}
+
+        //private void PopulateAdresses()
+        //{
+        //    string query = "SELECT a.AccountStatus FROM Accounts a" +
+        //        " INNER JOIN CustomerAccount b ON a.Id = b.AccountId" +
+        //        " WHERE b.CustomerId = @CustomerId";
+
+        //    using (connection = new SqlConnection(connectionString))
+        //    using (SqlCommand command = new SqlCommand(query, connection))
+        //    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+        //    {
+        //        command.Parameters.AddWithValue("@CustomerId", lstCustomers.SelectedValue);
+
+        //        DataTable adressesTable = new DataTable();
+        //        adapter.Fill(adressesTable);
+
+        //        lstAdresses.DisplayMember = "AccountStatus";
+        //        lstAdresses.ValueMember = "Id";
+        //        lstAdresses.DataSource = adressesTable;
+        //    }
+        //}
 
         private void PopulateDgv()
         {
@@ -60,31 +82,30 @@ namespace DDBcredit
             }
         }
 
-        private void PopulateAdresses()
+        private void PopulateDgvAccounts()
         {
-            string query = "SELECT a.Country FROM Adresses a" +
-                " INNER JOIN CustomerAdress b ON a.Id = b.AdressId" +
+            string query = "SELECT a.AccountType, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Accounts a" +
+                " INNER JOIN CustomerAccount b ON a.Id = b.AccountId" +
                 " WHERE b.CustomerId = @CustomerId";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                command.Parameters.AddWithValue("@CustomerId", lstCustomers.SelectedValue);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.RowIndex + 1);
 
                 DataTable adressesTable = new DataTable();
                 adapter.Fill(adressesTable);
 
-                lstAdresses.DisplayMember = "Country";
-                lstAdresses.ValueMember = "Id";
-                lstAdresses.DataSource = adressesTable;
+                dgvAccounts.DataSource = adressesTable;
             }
         }
 
-        private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PopulateAdresses();
-        }
+        //private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //PopulateAdresses();
+        //    //PopulateDgvAccounts();
+        //}
 
         private void btnAddCustomerName_Click(object sender, EventArgs e)
         {
@@ -110,12 +131,20 @@ namespace DDBcredit
                 command.ExecuteScalar();
             }
 
-            PopulateCustomers();
+            //PopulateCustomers();
             PopulateDgv();
         }
 
         private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
+        {
+            // MessageBox.Show("Dot Net Perls is awesome.");
+
+            //PopulateAdresses();
+            PopulateDgvAccounts();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -132,7 +161,10 @@ namespace DDBcredit
 
         private void label9_Click(object sender, EventArgs e)
         {
+        }
 
+        private void label15_Click(object sender, EventArgs e)
+        {
         }
 
         // basic functionalities:
