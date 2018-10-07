@@ -182,7 +182,7 @@ namespace DDBcredit
                 command.Parameters.AddWithValue("@CustomerPesel", txtCustomerPesel.Text);
                 command.Parameters.AddWithValue("@CustomerBirthplace", txtCustomerBirthPlace.Text);
                 command.Parameters.AddWithValue("@CustomerDocument", txtCustomerDocument.Text);
-                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.RowIndex + 1);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.Value);
                 txtCustomerName.Text = String.Empty;
                 txtCustomerSurname.Text = String.Empty;
                 txtCustomerBirthdate.Text = String.Empty;
@@ -212,19 +212,6 @@ namespace DDBcredit
             PopulateDgv();
         }
 
-        // basic functionalities:
-        //1.1) browse actual customers
-        //1.2) add new customers
-        //1.3) update info about customers, delete and do any other operation with them.
-
-        //2.1 add new accounts - new table with accounts
-        // - id has to be set automatically
-        // - account type
-        // - select customer
-        // - colect date and time when account opened
-        // - give to admin possibility to change date and user
-
-        //2.2
-        // -to customer browser add functionality to see account which he actually has and ones from the past
+        // TASK1: do not allow to update cells with null data. only update these cells with text inside.
     }
 }
