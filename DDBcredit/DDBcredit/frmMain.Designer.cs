@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.btnAddCustomerName = new System.Windows.Forms.Button();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.txtCustomerSurname = new System.Windows.Forms.TextBox();
             this.txtCustomerBirthdate = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddAccount = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
@@ -110,7 +110,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label2.Location = new System.Drawing.Point(797, 52);
+            this.label2.Location = new System.Drawing.Point(740, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(212, 18);
             this.label2.TabIndex = 6;
@@ -118,20 +118,20 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(900, 85);
+            this.txtCustomerName.Location = new System.Drawing.Point(843, 89);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerName.TabIndex = 7;
             // 
-            // btnAddCustomerName
+            // btnAddCustomer
             // 
-            this.btnAddCustomerName.Location = new System.Drawing.Point(913, 241);
-            this.btnAddCustomerName.Name = "btnAddCustomerName";
-            this.btnAddCustomerName.Size = new System.Drawing.Size(87, 23);
-            this.btnAddCustomerName.TabIndex = 8;
-            this.btnAddCustomerName.Text = "Add";
-            this.btnAddCustomerName.UseVisualStyleBackColor = true;
-            this.btnAddCustomerName.Click += new System.EventHandler(this.btnAddCustomerName_Click);
+            this.btnAddCustomer.Location = new System.Drawing.Point(856, 245);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(87, 23);
+            this.btnAddCustomer.TabIndex = 8;
+            this.btnAddCustomer.Text = "Add";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // dgvCustomers
             // 
@@ -140,42 +140,42 @@
             this.dgvCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.RowTemplate.Height = 24;
-            this.dgvCustomers.Size = new System.Drawing.Size(749, 312);
+            this.dgvCustomers.Size = new System.Drawing.Size(695, 312);
             this.dgvCustomers.TabIndex = 9;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             this.dgvCustomers.SelectionChanged += new System.EventHandler(this.dgvCustomers_SelectionChanged);
             // 
             // txtCustomerSurname
             // 
-            this.txtCustomerSurname.Location = new System.Drawing.Point(900, 111);
+            this.txtCustomerSurname.Location = new System.Drawing.Point(843, 115);
             this.txtCustomerSurname.Name = "txtCustomerSurname";
             this.txtCustomerSurname.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerSurname.TabIndex = 10;
             // 
             // txtCustomerBirthdate
             // 
-            this.txtCustomerBirthdate.Location = new System.Drawing.Point(900, 137);
+            this.txtCustomerBirthdate.Location = new System.Drawing.Point(843, 141);
             this.txtCustomerBirthdate.Name = "txtCustomerBirthdate";
             this.txtCustomerBirthdate.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerBirthdate.TabIndex = 11;
             // 
             // txtCustomerPesel
             // 
-            this.txtCustomerPesel.Location = new System.Drawing.Point(900, 163);
+            this.txtCustomerPesel.Location = new System.Drawing.Point(843, 167);
             this.txtCustomerPesel.Name = "txtCustomerPesel";
             this.txtCustomerPesel.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerPesel.TabIndex = 12;
             // 
             // txtCustomerBirthPlace
             // 
-            this.txtCustomerBirthPlace.Location = new System.Drawing.Point(900, 189);
+            this.txtCustomerBirthPlace.Location = new System.Drawing.Point(843, 193);
             this.txtCustomerBirthPlace.Name = "txtCustomerBirthPlace";
             this.txtCustomerBirthPlace.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerBirthPlace.TabIndex = 13;
             // 
             // txtCustomerDocument
             // 
-            this.txtCustomerDocument.Location = new System.Drawing.Point(900, 215);
+            this.txtCustomerDocument.Location = new System.Drawing.Point(843, 219);
             this.txtCustomerDocument.Name = "txtCustomerDocument";
             this.txtCustomerDocument.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerDocument.TabIndex = 14;
@@ -184,7 +184,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label3.Location = new System.Drawing.Point(792, 87);
+            this.label3.Location = new System.Drawing.Point(735, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 18);
             this.label3.TabIndex = 15;
@@ -195,7 +195,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label4.Location = new System.Drawing.Point(792, 113);
+            this.label4.Location = new System.Drawing.Point(735, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 18);
             this.label4.TabIndex = 16;
@@ -205,7 +205,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label5.Location = new System.Drawing.Point(792, 139);
+            this.label5.Location = new System.Drawing.Point(735, 143);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 18);
             this.label5.TabIndex = 17;
@@ -215,7 +215,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label6.Location = new System.Drawing.Point(792, 165);
+            this.label6.Location = new System.Drawing.Point(735, 169);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 18);
             this.label6.TabIndex = 18;
@@ -226,7 +226,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label7.Location = new System.Drawing.Point(792, 191);
+            this.label7.Location = new System.Drawing.Point(735, 195);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 18);
             this.label7.TabIndex = 19;
@@ -236,7 +236,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label8.Location = new System.Drawing.Point(792, 214);
+            this.label8.Location = new System.Drawing.Point(735, 218);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 18);
             this.label8.TabIndex = 20;
@@ -249,49 +249,51 @@
             this.dgvAccounts.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAccounts.Name = "dgvAccounts";
             this.dgvAccounts.RowTemplate.Height = 24;
-            this.dgvAccounts.Size = new System.Drawing.Size(749, 152);
+            this.dgvAccounts.Size = new System.Drawing.Size(695, 152);
             this.dgvAccounts.TabIndex = 21;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label14.Location = new System.Drawing.Point(792, 443);
+            this.label14.Location = new System.Drawing.Point(735, 447);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 18);
             this.label14.TabIndex = 30;
             this.label14.Text = "Account type";
             // 
-            // button1
+            // btnAddAccount
             // 
-            this.button1.Location = new System.Drawing.Point(925, 469);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Add customer";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Location = new System.Drawing.Point(868, 473);
+            this.btnAddAccount.Name = "btnAddAccount";
+            this.btnAddAccount.Size = new System.Drawing.Size(75, 23);
+            this.btnAddAccount.TabIndex = 24;
+            this.btnAddAccount.Text = "Add customer";
+            this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(900, 443);
+            this.textBox6.Location = new System.Drawing.Point(843, 447);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 23;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label15.Location = new System.Drawing.Point(851, 395);
+            this.label15.Location = new System.Drawing.Point(735, 410);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(121, 18);
+            this.label15.Size = new System.Drawing.Size(254, 18);
             this.label15.TabIndex = 22;
-            this.label15.Text = "Add new account";
+            this.label15.Text = "Create new account for selected user";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // btnUpdateCustomer
             // 
-            this.btnUpdateCustomer.Location = new System.Drawing.Point(854, 241);
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(797, 245);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
             this.btnUpdateCustomer.Size = new System.Drawing.Size(53, 23);
             this.btnUpdateCustomer.TabIndex = 31;
@@ -301,7 +303,7 @@
             // 
             // btnDeleteUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(795, 241);
+            this.btnDeleteUser.Location = new System.Drawing.Point(738, 245);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(53, 23);
             this.btnDeleteUser.TabIndex = 32;
@@ -313,11 +315,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 574);
+            this.ClientSize = new System.Drawing.Size(1009, 574);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.btnUpdateCustomer);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddAccount);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.dgvAccounts);
@@ -333,7 +335,7 @@
             this.Controls.Add(this.txtCustomerBirthdate);
             this.Controls.Add(this.txtCustomerSurname);
             this.Controls.Add(this.dgvCustomers);
-            this.Controls.Add(this.btnAddCustomerName);
+            this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -360,7 +362,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.Button btnAddCustomerName;
+        private System.Windows.Forms.Button btnAddCustomer;
         private System.Windows.Forms.DataGridView dgvCustomers;
         private System.Windows.Forms.TextBox txtCustomerSurname;
         private System.Windows.Forms.TextBox txtCustomerBirthdate;
@@ -375,7 +377,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvAccounts;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnUpdateCustomer;

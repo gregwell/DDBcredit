@@ -79,6 +79,8 @@ namespace DDBcredit
 
                 dgvCustomers.ReadOnly = true;
                 dgvCustomers.DataSource = ds.Tables[0];
+
+                dgvCustomers.Columns[0].Width = 30;
             }
         }
 
@@ -107,7 +109,7 @@ namespace DDBcredit
         //    //PopulateDgvAccounts();
         //}
 
-        private void btnAddCustomerName_Click(object sender, EventArgs e)
+        private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             string query = "INSERT INTO Customers VALUES (@CustomerName, @CustomerSurname, @CustomerBirthdate, @CustomerPesel, @CustomerBirthPlace, @CustomerDocument)";
 
@@ -212,6 +214,39 @@ namespace DDBcredit
             PopulateDgv();
         }
 
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT INTO Customers VALUES (@CustomerName, @CustomerSurname, @CustomerBirthdate, @CustomerPesel, @CustomerBirthPlace, @CustomerDocument)";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text);
+                command.Parameters.AddWithValue("@CustomerSurname", txtCustomerSurname.Text);
+                command.Parameters.AddWithValue("@CustomerBirthdate", txtCustomerBirthdate.Text);
+                command.Parameters.AddWithValue("@CustomerPesel", txtCustomerPesel.Text);
+                command.Parameters.AddWithValue("@CustomerBirthplace", txtCustomerBirthPlace.Text);
+                command.Parameters.AddWithValue("@CustomerDocument", txtCustomerDocument.Text);
+                txtCustomerName.Text = String.Empty;
+                txtCustomerSurname.Text = String.Empty;
+                txtCustomerBirthdate.Text = String.Empty;
+                txtCustomerPesel.Text = String.Empty;
+                txtCustomerBirthPlace.Text = String.Empty;
+                txtCustomerDocument.Text = String.Empty;
+                command.ExecuteScalar();
+            }
+
+            //PopulateCustomers();
+            PopulateDgv();
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+        }
+
         // TASK1: do not allow to update cells with null data. only update these cells with text inside.
+        // TASK2: add new account to selected user.
     }
 }
