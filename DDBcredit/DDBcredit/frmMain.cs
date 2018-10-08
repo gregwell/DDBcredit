@@ -28,45 +28,9 @@ namespace DDBcredit
             // TODO: This line of code loads data into the 'database1DataSet.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.database1DataSet.Customers);
 
-            //PopulateCustomers();
             PopulateDgv();
             PopulateDgvAccounts();
         }
-
-        //private void PopulateCustomers()
-        //{
-        //    using (connection = new SqlConnection(connectionString))
-        //    using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM customers", connection))
-        //    {
-        //        DataTable customerTable = new DataTable();
-        //        adapter.Fill(customerTable);
-
-        //        lstCustomers.DisplayMember = "Name";
-        //        lstCustomers.ValueMember = "Id";
-        //        lstCustomers.DataSource = customerTable;
-        //    }
-        //}
-
-        //private void PopulateAdresses()
-        //{
-        //    string query = "SELECT a.AccountStatus FROM Accounts a" +
-        //        " INNER JOIN CustomerAccount b ON a.Id = b.AccountId" +
-        //        " WHERE b.CustomerId = @CustomerId";
-
-        //    using (connection = new SqlConnection(connectionString))
-        //    using (SqlCommand command = new SqlCommand(query, connection))
-        //    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-        //    {
-        //        command.Parameters.AddWithValue("@CustomerId", lstCustomers.SelectedValue);
-
-        //        DataTable adressesTable = new DataTable();
-        //        adapter.Fill(adressesTable);
-
-        //        lstAdresses.DisplayMember = "AccountStatus";
-        //        lstAdresses.ValueMember = "Id";
-        //        lstAdresses.DataSource = adressesTable;
-        //    }
-        //}
 
         private void PopulateDgv()
         {
@@ -101,6 +65,8 @@ namespace DDBcredit
 
                 dgvAccounts.DataSource = adressesTable;
             }
+            dgvAccounts.Columns[0].Width = 30;
+            dgvAccounts.Columns[2].Width = 120;
         }
 
         //private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
@@ -224,7 +190,7 @@ namespace DDBcredit
                 connection.Open();
 
                 command.Parameters.AddWithValue("@AccountType", txtAccountType.Text);
-                command.Parameters.AddWithValue("@OpeningDate", DateTime.Today);
+                command.Parameters.AddWithValue("@OpeningDate", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
                 txtAccountType.Text = String.Empty;
                 command.ExecuteScalar();
             }
@@ -250,7 +216,7 @@ namespace DDBcredit
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@AccountId", userId);
-                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.Value);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentRow.Cells[0].Value);
 
                 command.ExecuteScalar();
             }
