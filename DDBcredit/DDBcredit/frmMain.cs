@@ -264,7 +264,7 @@ namespace DDBcredit
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
-            string query = "DELETE a from Accounts a INNER JOIN CustomerAccount c ON c.AccountId = a.Id WHERE a.Id = @AccountId OR c.AccountId = @AccountId";
+            string query = "DELETE FROM CustomerAccount WHERE AccountId = @AccountId; DELETE FROM Accounts WHERE Id = @AccountId";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
