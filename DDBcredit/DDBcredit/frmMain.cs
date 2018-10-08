@@ -86,7 +86,7 @@ namespace DDBcredit
 
         private void PopulateDgvAccounts()
         {
-            string query = "SELECT a.AccountType, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Accounts a" +
+            string query = "SELECT a.Id, a.AccountType, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Accounts a" +
                 " INNER JOIN CustomerAccount b ON a.Id = b.AccountId" +
                 " WHERE b.CustomerId = @CustomerId";
 
@@ -94,7 +94,7 @@ namespace DDBcredit
             using (SqlCommand command = new SqlCommand(query, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.RowIndex + 1);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentRow.Cells[0].Value);
 
                 DataTable adressesTable = new DataTable();
                 adapter.Fill(adressesTable);
@@ -207,7 +207,7 @@ namespace DDBcredit
             {
                 connection.Open();
 
-                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.Value);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentRow.Cells[0].Value);
                 command.ExecuteScalar();
             }
 
@@ -216,34 +216,66 @@ namespace DDBcredit
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO Customers VALUES (@CustomerName, @CustomerSurname, @CustomerBirthdate, @CustomerPesel, @CustomerBirthPlace, @CustomerDocument)";
+            string query = "INSERT INTO Accounts VALUES (@AccountType, @OpeningDate, null, 'active', 0)";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 connection.Open();
 
-                command.Parameters.AddWithValue("@CustomerName", txtCustomerName.Text);
-                command.Parameters.AddWithValue("@CustomerSurname", txtCustomerSurname.Text);
-                command.Parameters.AddWithValue("@CustomerBirthdate", txtCustomerBirthdate.Text);
-                command.Parameters.AddWithValue("@CustomerPesel", txtCustomerPesel.Text);
-                command.Parameters.AddWithValue("@CustomerBirthplace", txtCustomerBirthPlace.Text);
-                command.Parameters.AddWithValue("@CustomerDocument", txtCustomerDocument.Text);
-                txtCustomerName.Text = String.Empty;
-                txtCustomerSurname.Text = String.Empty;
-                txtCustomerBirthdate.Text = String.Empty;
-                txtCustomerPesel.Text = String.Empty;
-                txtCustomerBirthPlace.Text = String.Empty;
-                txtCustomerDocument.Text = String.Empty;
+                command.Parameters.AddWithValue("@AccountType", txtAccountType.Text);
+                command.Parameters.AddWithValue("@OpeningDate", DateTime.Today);
+                txtAccountType.Text = String.Empty;
                 command.ExecuteScalar();
             }
 
-            //PopulateCustomers();
-            PopulateDgv();
+            string query2 = "INSERT INTO CustomerAccount VALUES (@AccountId, @CustomerId)";
+            string maxid = "SELECT MAX(Id) FROM Accounts";
+
+            var userId = 1;
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(maxid, connection))
+            {
+                connection.Open();
+                //
+                SqlDataReader rd = cmd.ExecuteReader();
+                rd.Read(); // read first row
+                userId = rd.GetInt32(0);
+                //
+            }
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@AccountId", userId);
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentCell.Value);
+
+                command.ExecuteScalar();
+            }
+
+            PopulateDgvAccounts();
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
+        private void txtAccountType_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            string query = "DELETE a from Accounts a INNER JOIN CustomerAccount c ON c.AccountId = a.Id WHERE a.Id = @AccountId OR c.AccountId = @AccountId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@AccountId", dgvAccounts.CurrentRow.Cells[0].Value);
+                command.ExecuteScalar();
+            }
+
+            PopulateDgvAccounts();
         }
 
         // TASK1: do not allow to update cells with null data. only update these cells with text inside.

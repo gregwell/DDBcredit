@@ -53,10 +53,11 @@
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtAccountType = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnDeleteAccount = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -272,13 +273,13 @@
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // textBox6
+            // txtAccountType
             // 
-            this.textBox6.Location = new System.Drawing.Point(843, 447);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 23;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.txtAccountType.Location = new System.Drawing.Point(843, 447);
+            this.txtAccountType.Name = "txtAccountType";
+            this.txtAccountType.Size = new System.Drawing.Size(100, 20);
+            this.txtAccountType.TabIndex = 23;
+            this.txtAccountType.TextChanged += new System.EventHandler(this.txtAccountType_TextChanged);
             // 
             // label15
             // 
@@ -311,16 +312,27 @@
             this.btnDeleteUser.UseVisualStyleBackColor = true;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
+            // btnDeleteAccount
+            // 
+            this.btnDeleteAccount.Location = new System.Drawing.Point(738, 473);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.Size = new System.Drawing.Size(53, 23);
+            this.btnDeleteAccount.TabIndex = 33;
+            this.btnDeleteAccount.Text = "Delete";
+            this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 574);
+            this.Controls.Add(this.btnDeleteAccount);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.btnUpdateCustomer);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnAddAccount);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtAccountType);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.dgvAccounts);
             this.Controls.Add(this.label8);
@@ -378,10 +390,11 @@
         private System.Windows.Forms.DataGridView dgvAccounts;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnAddAccount;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtAccountType;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Button btnDeleteAccount;
     }
 }
 
