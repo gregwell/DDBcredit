@@ -58,6 +58,8 @@
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCurrency = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -111,7 +113,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label2.Location = new System.Drawing.Point(740, 56);
+            this.label2.Location = new System.Drawing.Point(820, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(212, 18);
             this.label2.TabIndex = 6;
@@ -119,14 +121,14 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(843, 89);
+            this.txtCustomerName.Location = new System.Drawing.Point(923, 131);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerName.TabIndex = 7;
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(856, 245);
+            this.btnAddCustomer.Location = new System.Drawing.Point(936, 287);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(87, 23);
             this.btnAddCustomer.TabIndex = 8;
@@ -148,35 +150,35 @@
             // 
             // txtCustomerSurname
             // 
-            this.txtCustomerSurname.Location = new System.Drawing.Point(843, 115);
+            this.txtCustomerSurname.Location = new System.Drawing.Point(923, 157);
             this.txtCustomerSurname.Name = "txtCustomerSurname";
             this.txtCustomerSurname.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerSurname.TabIndex = 10;
             // 
             // txtCustomerBirthdate
             // 
-            this.txtCustomerBirthdate.Location = new System.Drawing.Point(843, 141);
+            this.txtCustomerBirthdate.Location = new System.Drawing.Point(923, 183);
             this.txtCustomerBirthdate.Name = "txtCustomerBirthdate";
             this.txtCustomerBirthdate.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerBirthdate.TabIndex = 11;
             // 
             // txtCustomerPesel
             // 
-            this.txtCustomerPesel.Location = new System.Drawing.Point(843, 167);
+            this.txtCustomerPesel.Location = new System.Drawing.Point(923, 209);
             this.txtCustomerPesel.Name = "txtCustomerPesel";
             this.txtCustomerPesel.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerPesel.TabIndex = 12;
             // 
             // txtCustomerBirthPlace
             // 
-            this.txtCustomerBirthPlace.Location = new System.Drawing.Point(843, 193);
+            this.txtCustomerBirthPlace.Location = new System.Drawing.Point(923, 235);
             this.txtCustomerBirthPlace.Name = "txtCustomerBirthPlace";
             this.txtCustomerBirthPlace.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerBirthPlace.TabIndex = 13;
             // 
             // txtCustomerDocument
             // 
-            this.txtCustomerDocument.Location = new System.Drawing.Point(843, 219);
+            this.txtCustomerDocument.Location = new System.Drawing.Point(923, 261);
             this.txtCustomerDocument.Name = "txtCustomerDocument";
             this.txtCustomerDocument.Size = new System.Drawing.Size(100, 20);
             this.txtCustomerDocument.TabIndex = 14;
@@ -185,7 +187,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label3.Location = new System.Drawing.Point(735, 91);
+            this.label3.Location = new System.Drawing.Point(815, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 18);
             this.label3.TabIndex = 15;
@@ -196,7 +198,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label4.Location = new System.Drawing.Point(735, 117);
+            this.label4.Location = new System.Drawing.Point(815, 159);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 18);
             this.label4.TabIndex = 16;
@@ -206,7 +208,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label5.Location = new System.Drawing.Point(735, 143);
+            this.label5.Location = new System.Drawing.Point(815, 185);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 18);
             this.label5.TabIndex = 17;
@@ -216,7 +218,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label6.Location = new System.Drawing.Point(735, 169);
+            this.label6.Location = new System.Drawing.Point(815, 211);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 18);
             this.label6.TabIndex = 18;
@@ -227,7 +229,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label7.Location = new System.Drawing.Point(735, 195);
+            this.label7.Location = new System.Drawing.Point(815, 237);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 18);
             this.label7.TabIndex = 19;
@@ -237,7 +239,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label8.Location = new System.Drawing.Point(735, 218);
+            this.label8.Location = new System.Drawing.Point(815, 260);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 18);
             this.label8.TabIndex = 20;
@@ -250,14 +252,14 @@
             this.dgvAccounts.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAccounts.Name = "dgvAccounts";
             this.dgvAccounts.RowTemplate.Height = 24;
-            this.dgvAccounts.Size = new System.Drawing.Size(695, 152);
+            this.dgvAccounts.Size = new System.Drawing.Size(780, 152);
             this.dgvAccounts.TabIndex = 21;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label14.Location = new System.Drawing.Point(735, 447);
+            this.label14.Location = new System.Drawing.Point(827, 446);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 18);
             this.label14.TabIndex = 30;
@@ -265,7 +267,7 @@
             // 
             // btnAddAccount
             // 
-            this.btnAddAccount.Location = new System.Drawing.Point(868, 473);
+            this.btnAddAccount.Location = new System.Drawing.Point(960, 506);
             this.btnAddAccount.Name = "btnAddAccount";
             this.btnAddAccount.Size = new System.Drawing.Size(75, 23);
             this.btnAddAccount.TabIndex = 24;
@@ -275,7 +277,7 @@
             // 
             // txtAccountType
             // 
-            this.txtAccountType.Location = new System.Drawing.Point(843, 447);
+            this.txtAccountType.Location = new System.Drawing.Point(935, 446);
             this.txtAccountType.Name = "txtAccountType";
             this.txtAccountType.Size = new System.Drawing.Size(100, 20);
             this.txtAccountType.TabIndex = 23;
@@ -285,7 +287,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.label15.Location = new System.Drawing.Point(735, 410);
+            this.label15.Location = new System.Drawing.Point(827, 409);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(254, 18);
             this.label15.TabIndex = 22;
@@ -294,7 +296,7 @@
             // 
             // btnUpdateCustomer
             // 
-            this.btnUpdateCustomer.Location = new System.Drawing.Point(797, 245);
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(877, 287);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
             this.btnUpdateCustomer.Size = new System.Drawing.Size(53, 23);
             this.btnUpdateCustomer.TabIndex = 31;
@@ -304,7 +306,7 @@
             // 
             // btnDeleteUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(738, 245);
+            this.btnDeleteUser.Location = new System.Drawing.Point(818, 287);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(53, 23);
             this.btnDeleteUser.TabIndex = 32;
@@ -314,7 +316,7 @@
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.Location = new System.Drawing.Point(738, 473);
+            this.btnDeleteAccount.Location = new System.Drawing.Point(830, 506);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(53, 23);
             this.btnDeleteAccount.TabIndex = 33;
@@ -322,11 +324,30 @@
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
             this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label9.Location = new System.Drawing.Point(827, 472);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 18);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Currency";
+            // 
+            // txtCurrency
+            // 
+            this.txtCurrency.Location = new System.Drawing.Point(935, 472);
+            this.txtCurrency.Name = "txtCurrency";
+            this.txtCurrency.Size = new System.Drawing.Size(100, 20);
+            this.txtCurrency.TabIndex = 34;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 574);
+            this.ClientSize = new System.Drawing.Size(1087, 574);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtCurrency);
             this.Controls.Add(this.btnDeleteAccount);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.btnUpdateCustomer);
@@ -395,6 +416,8 @@
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnDeleteUser;
         private System.Windows.Forms.Button btnDeleteAccount;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCurrency;
     }
 }
 

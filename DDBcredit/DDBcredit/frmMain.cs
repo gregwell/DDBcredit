@@ -45,12 +45,13 @@ namespace DDBcredit
                 dgvCustomers.DataSource = ds.Tables[0];
 
                 dgvCustomers.Columns[0].Width = 30;
+                dgvCustomers.BackgroundColor = System.Drawing.SystemColors.Control;
             }
         }
 
         private void PopulateDgvAccounts()
         {
-            string query = "SELECT a.Id, a.AccountType, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Accounts a" +
+            string query = "SELECT a.Id, a.AccountType, a.IBAN, a.Currency, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Accounts a" +
                 " INNER JOIN CustomerAccount b ON a.Id = b.AccountId" +
                 " WHERE b.CustomerId = @CustomerId";
 
@@ -66,14 +67,31 @@ namespace DDBcredit
                 dgvAccounts.DataSource = adressesTable;
             }
             dgvAccounts.Columns[0].Width = 30;
-            dgvAccounts.Columns[2].Width = 120;
-        }
+            dgvAccounts.Columns[1].Width = 74;
+            dgvAccounts.Columns[2].Width = 180;
+            dgvAccounts.Columns[3].Width = 57;
+            dgvAccounts.Columns[4].Width = 118;
+            dgvAccounts.Columns[5].Width = 85;
+            dgvAccounts.Columns[6].Width = 95;
+            dgvAccounts.Columns[7].Width = 95;
+            dgvAccounts.BackgroundColor = System.Drawing.SystemColors.Control;
 
-        //private void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //PopulateAdresses();
-        //    //PopulateDgvAccounts();
-        //}
+            for (int i = 0; i < dgvAccounts.Rows.Count - 1; i++)
+            {
+                if (dgvAccounts.Rows[i].Cells[6].Value.ToString() == "active")
+                {
+                    dgvAccounts.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#c5ffa8");
+                }
+                else if (dgvAccounts.Rows[i].Cells[6].Value.ToString() == "blocked")
+                {
+                    dgvAccounts.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFA8A8");
+                }
+                else
+                {
+                    dgvAccounts.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#B0B0B0");
+                }
+            }
+        }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
@@ -182,16 +200,20 @@ namespace DDBcredit
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO Accounts VALUES (@AccountType, @OpeningDate, null, 'active', 0)";
+            string query = "INSERT INTO Accounts VALUES (@AccountType, @IBAN, @Currency, 'active', 0, @OpeningDate, null)";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 connection.Open();
 
+                Random rnd = new Random();
+                int IBAN = rnd.Next(10000000, 99999999);
+
                 command.Parameters.AddWithValue("@AccountType", txtAccountType.Text);
                 command.Parameters.AddWithValue("@OpeningDate", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-                txtAccountType.Text = String.Empty;
+                command.Parameters.AddWithValue("@IBAN", GenerateIBAN());
+                command.Parameters.AddWithValue("@Currency", txtCurrency.Text);
                 command.ExecuteScalar();
             }
 
@@ -222,6 +244,15 @@ namespace DDBcredit
             }
 
             PopulateDgvAccounts();
+        }
+
+        private string GenerateIBAN()
+        {
+            var r = new Random();
+
+            var v = new char[26];
+            for (var j = 0; j < 26; j++) v[j] = (char)(r.NextDouble() * 10 + 48);
+            return new string(v);
         }
 
         private void txtAccountType_TextChanged(object sender, EventArgs e)
