@@ -53,7 +53,8 @@ namespace DDBcredit
         {
             string query = "SELECT a.Id, a.AccountType, a.IBAN, a.Currency, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Accounts a" +
                 " INNER JOIN CustomerAccount b ON a.Id = b.AccountId" +
-                " WHERE b.CustomerId = @CustomerId";
+                " WHERE b.CustomerId = @CustomerId " +
+                " ORDER BY CASE WHEN a.AccountStatus = 'active' THEN 1 ELSE 2 END, a.AccountStatus";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -269,6 +270,40 @@ namespace DDBcredit
                 connection.Open();
 
                 command.Parameters.AddWithValue("@AccountId", dgvAccounts.CurrentRow.Cells[0].Value);
+                command.ExecuteScalar();
+            }
+
+            PopulateDgvAccounts();
+        }
+
+        private void btnBlockAccount_Click(object sender, EventArgs e)
+        {
+            string query = "UPDATE Accounts SET AccountStatus = 'blocked' WHERE Id = @AccountId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@AccountId", dgvAccounts.CurrentRow.Cells[0].Value);
+
+                command.ExecuteScalar();
+            }
+
+            PopulateDgvAccounts();
+        }
+
+        private void btnUnblockAccount_Click(object sender, EventArgs e)
+        {
+            string query = "UPDATE Accounts SET AccountStatus = 'active' WHERE Id = @AccountId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@AccountId", dgvAccounts.CurrentRow.Cells[0].Value);
+
                 command.ExecuteScalar();
             }
 
