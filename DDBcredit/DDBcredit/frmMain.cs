@@ -30,6 +30,7 @@ namespace DDBcredit
 
             PopulateDgv();
             PopulateDgvAccounts();
+            cbCurrencyAddItems();
         }
 
         private void PopulateDgv()
@@ -214,7 +215,7 @@ namespace DDBcredit
                 command.Parameters.AddWithValue("@AccountType", txtAccountType.Text);
                 command.Parameters.AddWithValue("@OpeningDate", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
                 command.Parameters.AddWithValue("@IBAN", GenerateIBAN());
-                command.Parameters.AddWithValue("@Currency", txtCurrency.Text);
+                command.Parameters.AddWithValue("@Currency", cbCurrency.Text);
                 command.ExecuteScalar();
             }
 
@@ -295,7 +296,8 @@ namespace DDBcredit
 
         private void btnUnblockAccount_Click(object sender, EventArgs e)
         {
-            string query = "UPDATE Accounts SET AccountStatus = 'active' WHERE Id = @AccountId";
+            string query = "UPDATE Accounts SET AccountStatus = 'active' WHERE Id = @AccountId; " +
+              "UPDATE Accounts SET ClosingDate = @ClosingDate WHERE Id = @AccountId";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -303,6 +305,7 @@ namespace DDBcredit
                 connection.Open();
 
                 command.Parameters.AddWithValue("@AccountId", dgvAccounts.CurrentRow.Cells[0].Value);
+                command.Parameters.AddWithValue("@ClosingDate", "");
 
                 command.ExecuteScalar();
             }
@@ -310,7 +313,50 @@ namespace DDBcredit
             PopulateDgvAccounts();
         }
 
+        private void btnCloseAccount_Click(object sender, EventArgs e)
+        {
+            string query = "UPDATE Accounts SET AccountStatus = 'closed' WHERE Id = @AccountId;" +
+                "UPDATE Accounts SET ClosingDate = @ClosingDate WHERE Id = @AccountId";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                command.Parameters.AddWithValue("@AccountId", dgvAccounts.CurrentRow.Cells[0].Value);
+                command.Parameters.AddWithValue("@ClosingDate", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+
+                command.ExecuteScalar();
+            }
+
+            PopulateDgvAccounts();
+        }
+
+        private void label9_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void txtCurrency_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void cbCurrencyAddItems()
+        {
+            cbCurrency.Items.Add("PLN");
+            cbCurrency.Items.Add("EUR");
+            cbCurrency.Items.Add("GBP");
+            cbCurrency.Items.Add("UAH");
+            cbCurrency.Items.Add("RUB");
+        }
+
         // TASK1: do not allow to update cells with null data. only update these cells with text inside.
         // TASK2: add new account to selected user.
+
+        // if text box is null then download the data from this cell using sql command and fill with it this string
+        //
     }
 }
