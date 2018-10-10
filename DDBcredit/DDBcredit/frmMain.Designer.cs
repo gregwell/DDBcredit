@@ -53,7 +53,6 @@
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.txtAccountType = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnUpdateCustomer = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
@@ -83,6 +82,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtAdressCat = new System.Windows.Forms.TextBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
+            this.cbAccountType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
@@ -317,15 +317,6 @@
             this.btnAddAccount.Text = "Add customer";
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
-            // 
-            // txtAccountType
-            // 
-            this.txtAccountType.Location = new System.Drawing.Point(1237, 532);
-            this.txtAccountType.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAccountType.Name = "txtAccountType";
-            this.txtAccountType.Size = new System.Drawing.Size(132, 22);
-            this.txtAccountType.TabIndex = 23;
-            this.txtAccountType.TextChanged += new System.EventHandler(this.txtAccountType_TextChanged);
             // 
             // label15
             // 
@@ -620,12 +611,23 @@
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(132, 24);
             this.cbCurrency.TabIndex = 61;
+            this.cbCurrency.Text = "EUR";
+            // 
+            // cbAccountType
+            // 
+            this.cbAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAccountType.FormattingEnabled = true;
+            this.cbAccountType.Location = new System.Drawing.Point(1237, 532);
+            this.cbAccountType.Name = "cbAccountType";
+            this.cbAccountType.Size = new System.Drawing.Size(132, 24);
+            this.cbAccountType.TabIndex = 62;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1410, 1055);
+            this.Controls.Add(this.cbAccountType);
             this.Controls.Add(this.cbCurrency);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.txtAdressCat);
@@ -656,7 +658,6 @@
             this.Controls.Add(this.btnUpdateCustomer);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnAddAccount);
-            this.Controls.Add(this.txtAccountType);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.dgvAccounts);
             this.Controls.Add(this.label8);
@@ -716,7 +717,6 @@
         private System.Windows.Forms.DataGridView dgvAccounts;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnAddAccount;
-        private System.Windows.Forms.TextBox txtAccountType;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnUpdateCustomer;
         private System.Windows.Forms.Button btnDeleteUser;
@@ -746,6 +746,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtAdressCat;
         private System.Windows.Forms.ComboBox cbCurrency;
+        private System.Windows.Forms.ComboBox cbAccountType;
     }
 }
 

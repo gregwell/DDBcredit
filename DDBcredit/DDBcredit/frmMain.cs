@@ -30,7 +30,7 @@ namespace DDBcredit
 
             PopulateDgv();
             PopulateDgvAccounts();
-            cbCurrencyAddItems();
+            cbAddItems();
         }
 
         private void PopulateDgv()
@@ -94,6 +94,56 @@ namespace DDBcredit
                 }
             }
         }
+
+        //Populate Adresses
+        private void PopulateDgvAdresses()
+        {
+            string query = "SELECT a.Id, a.AccountType, a.IBAN, a.Currency, a.OpeningDate, a.ClosingDate, a.AccountStatus, a.CurrentBalance FROM Adresses a" +
+                " INNER JOIN CustomerAdress b ON a.Id = b.AdressId" +
+                " WHERE b.CustomerId = @CustomerId " +
+                " ORDER BY CASE WHEN a.AdressStatus = 'active' THEN 1 ELSE 2 END, a.AdressStatus";
+
+            //I need to add adress status AND adding date AND deactivation date as a table data
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@CustomerId", dgvCustomers.CurrentRow.Cells[0].Value);
+
+                DataTable adressesTable = new DataTable();
+                adapter.Fill(adressesTable);
+
+                dgvAccounts.DataSource = adressesTable;
+            }
+            dgvAccounts.Columns[0].Width = 30;
+            dgvAccounts.Columns[1].Width = 74;
+            dgvAccounts.Columns[2].Width = 180;
+            dgvAccounts.Columns[3].Width = 57;
+            dgvAccounts.Columns[4].Width = 118;
+            dgvAccounts.Columns[5].Width = 85;
+            dgvAccounts.Columns[6].Width = 95;
+            dgvAccounts.Columns[7].Width = 95;
+            dgvAccounts.BackgroundColor = System.Drawing.SystemColors.Control;
+
+            for (int i = 0; i < dgvAccounts.Rows.Count - 1; i++)
+            {
+                if (dgvAccounts.Rows[i].Cells[6].Value.ToString() == "active")
+                {
+                    dgvAccounts.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#c5ffa8");
+                }
+                else if (dgvAccounts.Rows[i].Cells[6].Value.ToString() == "blocked")
+                {
+                    dgvAccounts.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFA8A8");
+                }
+                else
+                {
+                    dgvAccounts.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#B0B0B0");
+                }
+            }
+        }
+
+        // Populate adresses end
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
@@ -212,7 +262,7 @@ namespace DDBcredit
                 Random rnd = new Random();
                 int IBAN = rnd.Next(10000000, 99999999);
 
-                command.Parameters.AddWithValue("@AccountType", txtAccountType.Text);
+                command.Parameters.AddWithValue("@AccountType", cbAccountType.Text);
                 command.Parameters.AddWithValue("@OpeningDate", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
                 command.Parameters.AddWithValue("@IBAN", GenerateIBAN());
                 command.Parameters.AddWithValue("@Currency", cbCurrency.Text);
@@ -344,13 +394,16 @@ namespace DDBcredit
         {
         }
 
-        private void cbCurrencyAddItems()
+        private void cbAddItems()
         {
             cbCurrency.Items.Add("PLN");
             cbCurrency.Items.Add("EUR");
             cbCurrency.Items.Add("GBP");
             cbCurrency.Items.Add("UAH");
             cbCurrency.Items.Add("RUB");
+            cbAccountType.Items.Add("checking");
+            cbAccountType.Items.Add("savings");
+            cbAccountType.Items.Add("business");
         }
 
         // TASK1: do not allow to update cells with null data. only update these cells with text inside.
